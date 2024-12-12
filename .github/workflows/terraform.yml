@@ -32,4 +32,4 @@ jobs:
       run: terraform plan
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve   this is my current terrarom.yml file please update 
+      run: terraform apply -auto-approve  
