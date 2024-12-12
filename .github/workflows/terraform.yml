@@ -22,6 +22,8 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
+        # If using temporary credentials from AWS STS, include the session token
+        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # Uncomment if using temporary credentials
 
     - name: Terraform Init
       run: terraform init
@@ -31,5 +33,3 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
-
-
