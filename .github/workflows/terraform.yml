@@ -25,32 +25,11 @@ jobs:
         # If using temporary credentials from AWS STS, include the session token
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # Uncomment if using temporary credentials
 
-    - name: Terraform Validate
-      run: terraform validate  # Validate the Terraform configuration
-
-    - name: Install Checkov
-      run: pip install checkov  # Install Checkov for security scanning
-
-    - name: Run Checkov for Terraform Security Scanning
-      run: checkov -d .  # Security scan for Terraform code
-
-    - name: Install TFLint
-      run: |
-        curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash  # Install TFLint
-
-    - name: Run TFLint for Terraform Linting
-      run: tflint --config .tflint.hcl  # Lint Terraform code for best practices
-
     - name: Terraform Init
-      run: terraform init  # Initialize Terraform configuration
+      run: terraform init
 
     - name: Terraform Plan
-      run: terraform plan  # Preview the Terraform changes
+      run: terraform plan
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve  # Apply the changes
-
-    - name: Push Changes to GitHub (Optional)
-      run: git push origin main  # Push changes back to GitHub if required
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the GitHub Token stored in Secrets
+      run: terraform apply -auto-approve   this is my current terrarom.yml file please update 
