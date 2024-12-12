@@ -1,0 +1,29 @@
+name: Terraform Deployment
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository code
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1  # Set up Terraform
+        with:
+          terraform_version: '1.5.0'  # Specify the version of Terraform to use
+
+      - name: Terraform Init
+        run: terraform init  # Initialize Terraform
+
+      - name: Terraform Plan
+        run: terraform plan  # Display the execution plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve  # Apply the changes automatically
+
